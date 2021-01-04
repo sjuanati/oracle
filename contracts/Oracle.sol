@@ -3,7 +3,7 @@ pragma solidity ^0.7.3;
 
 contract Oracle {
     struct Data {
-        uint256 date; // date when we report the data
+        uint256 date;
         uint256 payload;
     }
     address public admin;

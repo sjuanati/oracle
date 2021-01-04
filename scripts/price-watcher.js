@@ -10,8 +10,8 @@ module.exports = async done => {
 
     while(true) {
         const response = await CoinGeckoClient.coins.fetch('bitcoin', {});
-        // we can't work with decimals in SC, so we get the last 2 decimals:
         let currentPrice = parseFloat(response.data.market_data.current_price.usd);
+        // we can't work with decimals in SC, so we get the last 2 decimals:
         currentPrice = parseInt(currentPrice * 100);
         await oracle.updateData(
             web3.utils.soliditySha3('BTC/USD'),
@@ -19,7 +19,7 @@ module.exports = async done => {
             {from: reporter}
         );
         console.log(`New price for BTC/USD ${currentPrice} updated on-chain`);
-        await new Promise(resolve => setTimeout(resolve, POLL_INTERVAL));
+        await new Promise(resolve => setTimeout(resolve, POLL_INTERVAL)); // Timer JS: promise resolved only after timeout
     }
 
     done(); // for truffle, to know when it's done

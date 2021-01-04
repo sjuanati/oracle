@@ -1,4 +1,4 @@
-const Oracle = artifacts.require("Oracle".sol);
+const Oracle = artifacts.require("Oracle.sol");
 const Consumer = artifacts.require("Consumer.sol");
 
 module.exports = async (deployer, _network, addresses) => {
